@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "438985126070",
+    "firebase_url": "https://pets-19846.firebaseio.com",
+    "project_id": "pets-19846",
+    "storage_bucket": "pets-19846.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438985126070:android:2a55f6d380bb8f0cfcf617",
+        "android_client_info": {
+          "package_name": "ashrafj.pets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438985126070-8dn8rd9jiebsldi9b6qt0nhpmhn5eoi1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ashrafj.pets",
+            "certificate_hash": "d9c82228d41037714bb6581e816ec97e168e5d0b"
+          }
+        },
+        {
+          "client_id": "438985126070-ern1jqce0temk7onddosikh2mpf3mpcr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfyqLtk_3gLxo4_Ty44cnVB35IM_g5MNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438985126070-ern1jqce0temk7onddosikh2mpf3mpcr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
