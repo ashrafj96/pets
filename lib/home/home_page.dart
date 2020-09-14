@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pets/account/account_page.dart';
+import 'package:pets/categories/categories_page.dart';
 import 'package:pets/home/cupertino_home_scaffold.dart';
 import 'package:pets/home/tab_item.dart';
-
-import 'file:///D:/flutter_projects/petsapp/lib/categories/categories_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
