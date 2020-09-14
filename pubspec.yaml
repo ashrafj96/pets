@@ -32,6 +32,7 @@ dependencies:
   provider: ^3.1.1+1
   cloud_firestore: ^0.12.9+5
   google_sign_in: ^4.5.3
+  google_maps_flutter: ^0.5.32
 
 dev_dependencies:
   flutter_test:
