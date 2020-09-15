@@ -12,53 +12,77 @@ class CategoriesPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 2.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          padding: EdgeInsets.all(3.0),
-          children: <Widget>[
-            CategoryCard(
-              cardIcon: Icon(Icons.chat),
-              cardTitle: "Community",
-              tapOnCard: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Community()));
-              },
-            ),
-            CategoryCard(
-              cardIcon: Icon(Icons.local_hospital),
-              cardTitle: "Rescue",
-              tapOnCard: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Community()));
-              },
-            ),
-            CategoryCard(
-              cardIcon: Icon(Icons.pets),
-              cardTitle: "Adopt",
-              tapOnCard: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Community()));
-              },
-            ),
-            CategoryCard(
-              cardIcon: Icon(Icons.shopping_cart),
-              cardTitle: "Shops",
-              tapOnCard: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Community()));
-              },
-            ),
-            CategoryCard(
-              cardIcon: Icon(Icons.widgets),
-              cardTitle: "More...",
-              tapOnCard: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Community()));
-              },
-            ),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: Container(
+          color: Colors.orangeAccent[200],
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 2.0),
+          child: GridView.count(
+            crossAxisCount: 2,
+            padding: EdgeInsets.all(3.0),
+            children: <Widget>[
+              CategoryCard(
+                cardIcon: Icon(
+                  Icons.chat,
+                  color: Colors.orangeAccent,
+                  size: 40.0,
+                ),
+                cardTitle: "Community",
+                tapOnCard: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Community()));
+                },
+              ),
+              CategoryCard(
+                cardIcon: Icon(
+                  Icons.local_hospital,
+                  color: Colors.orangeAccent,
+                  size: 40.0,
+                ),
+                cardTitle: "Rescue",
+                tapOnCard: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Community()));
+                },
+              ),
+              CategoryCard(
+                cardIcon: Icon(
+                  Icons.pets,
+                  color: Colors.orangeAccent,
+                  size: 40.0,
+                ),
+                cardTitle: "Adopt",
+                tapOnCard: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Community()));
+                },
+              ),
+              CategoryCard(
+                cardIcon: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.orangeAccent,
+                  size: 40.0,
+                ),
+                cardTitle: "Shops",
+                tapOnCard: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Community()));
+                },
+              ),
+              CategoryCard(
+                cardIcon: Icon(
+                  Icons.widgets,
+                  color: Colors.orangeAccent,
+                  size: 40.0,
+                ),
+                cardTitle: "More...",
+                tapOnCard: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Community()));
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

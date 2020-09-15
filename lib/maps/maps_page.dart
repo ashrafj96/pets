@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class GMap extends StatefulWidget {
@@ -10,6 +11,8 @@ class GMap extends StatefulWidget {
 
 class _GMapState extends State<GMap> {
   Set<Marker> _markers = HashSet<Marker>();
+  Position _position;
+  bool gotLocation = false;
   GoogleMapController _mapController;
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
@@ -18,11 +21,26 @@ class _GMapState extends State<GMap> {
       _markers.add(
         Marker(
           markerId: MarkerId("0"),
-          position: LatLng(37.77483, -122.41942),
+          position: LatLng(_position.latitude, _position.longitude),
           infoWindow: InfoWindow(title: "you\'re here"),
         ),
       );
     });
+  }
+
+  void getLocation() async {
+    Position position =
+        await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    _position = position;
+    setState(() {
+      gotLocation = true;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getLocation();
   }
 
   @override
@@ -34,30 +52,36 @@ class _GMapState extends State<GMap> {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.only(bottom: 50.0),
-        child: Stack(
-          children: [
-            GoogleMap(
-              mapToolbarEnabled: false,
-              zoomControlsEnabled: false,
-              myLocationEnabled: true,
-              markers: _markers,
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                  target: LatLng(37.77483, -122.41942), zoom: 12),
-            ),
-            Container(
-              alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
-              child: Text(
-                "Find pet shops around you",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      body: _position != null
+          ? Container(
+              padding: EdgeInsets.only(bottom: 50.0),
+              child: Stack(
+                children: [
+                  GoogleMap(
+                    mapToolbarEnabled: false,
+                    zoomControlsEnabled: false,
+                    myLocationEnabled: true,
+                    markers: _markers,
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                        target: LatLng(_position.latitude, _position.longitude),
+                        zoom: 13),
+                  ),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
+                    child: Text(
+                      "Find pet shops around you",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
               ),
             )
-          ],
-        ),
-      ),
+          : Center(
+              child: CircularProgressIndicator(),
+            ),
     );
   }
 }

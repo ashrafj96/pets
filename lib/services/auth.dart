@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:pets/services/api_path.dart';
 
 class User {
   User(
@@ -88,11 +86,12 @@ class Auth implements AuthBase {
     await authResult.user.reload();
 
     FirebaseUser updatedUser = await _firebaseAuth.currentUser();
+    print(updatedUser.displayName);
 
-    final path = APIPath.user(authResult.user.uid);
-    final documentReference = Firestore.instance.document(path);
-    await documentReference
-        .setData({'email': email, 'displayName': displayName});
+    // final path = APIPath.user(authResult.user.uid);
+    // final documentReference = Firestore.instance.document(path);
+    // await documentReference
+    //     .setData({'email': email, 'displayName': displayName});
     return _userFromFirebase(authResult.user);
   }
 

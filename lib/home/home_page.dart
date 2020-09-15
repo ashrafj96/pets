@@ -12,6 +12,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TabItem _currentTab = TabItem.categories;
+  final Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
+    TabItem.categories: GlobalKey<NavigatorState>(),
+    TabItem.shops: GlobalKey<NavigatorState>(),
+    TabItem.account: GlobalKey<NavigatorState>(),
+  };
 
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
@@ -22,15 +27,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _select(TabItem tabItem) {
-    setState(() => _currentTab = tabItem);
+    if (tabItem == _currentTab) {
+      //pop to first route
+      navigatorKeys[tabItem].currentState.popUntil((route) => route.isFirst);
+    } else {
+      setState(() => _currentTab = tabItem);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoHomeScaffold(
-      currentTab: _currentTab,
-      onSelectTab: _select,
-      widgetBuilders: widgetBuilders,
+    return WillPopScope(
+      onWillPop: () async =>
+          !await navigatorKeys[_currentTab].currentState.maybePop(),
+      child: CupertinoHomeScaffold(
+        currentTab: _currentTab,
+        onSelectTab: _select,
+        widgetBuilders: widgetBuilders,
+        navigatorKeys: navigatorKeys,
+      ),
     );
   }
 }

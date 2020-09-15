@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pets/models/question.dart';
 import 'package:pets/services/auth.dart';
+import 'package:pets/services/database.dart';
 import 'package:pets/widgets/avatar.dart';
 import 'package:pets/widgets/platform_alert_dialog.dart';
+import 'package:pets/widgets/question_list_tile.dart';
 import 'package:provider/provider.dart';
 
 class AccountPage extends StatelessWidget {
@@ -28,16 +31,8 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final userData = Provider.of<UsersData>(context);
     final user = Provider.of<User>(context);
-    // final database = Provider.of<Database>(context);
-    // database.readUserData();
-    // FireStoreDatabase databaseU;
-    // print(databaseU.displayName);
 
-    // UsersData data;
-    // UsersData.formDocument(user.uid);
-    // print(data.displayName);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -61,6 +56,7 @@ class AccountPage extends StatelessWidget {
           child: _buildUserInfo(user),
         ),
       ),
+      body: _buildContent(context),
     );
   }
 
@@ -85,6 +81,37 @@ class AccountPage extends StatelessWidget {
           height: 8,
         )
       ],
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    final database = Provider.of<Database>(context, listen: false);
+    return StreamBuilder<List<Question>>(
+      stream: database.userQuestionsStream(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+            child: Text('Something went wrong...'),
+          );
+        }
+        if (snapshot.hasData) {
+          final questions = snapshot.data;
+          final children = questions
+              .map(
+                (question) => QuestionListTile(
+                  question: question,
+                ),
+              )
+              .toList();
+          return ListView(
+            children: children,
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }

@@ -1,4 +1,8 @@
 class APIPath {
-  static String user(String uid) => 'users/$uid';
-  static String userData(String uid) => 'users/$uid/';
+  static String question(String uid, String questionId) =>
+      'users/$uid/questions/$questionId';
+  static String questions(String uid) => 'users/$uid/questions';
+  static String allQuestions() => 'questions/';
+  static String createInAllQuestions(String questionId) =>
+      'questions/$questionId';
 }

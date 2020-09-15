@@ -20,7 +20,8 @@ class LandingPage extends StatelessWidget {
           return Provider<User>.value(
             value: user,
             child: Provider<Database>(
-                create: (_) => FireStoreDatabase(uid: user.uid),
+                create: (_) => FireStoreDatabase(
+                    uid: user.uid, displayName: user.displayName),
                 child: HomePage()),
           );
         } else {

@@ -103,10 +103,10 @@ class SignInPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             SizedBox(
-              height: 50.0,
+              // height: 50.0,
               child: _buildHeader(),
             ),
-            SizedBox(height: 48.0),
+            SizedBox(height: 18.0),
             SocialSignInButton(
               assetName: 'images/google-logo.png',
               text: 'Sign in with Google',
@@ -154,13 +154,10 @@ class SignInPage extends StatelessWidget {
         child: CircularProgressIndicator(),
       );
     }
-    return Text(
-      'Sign in',
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontSize: 32.0,
-        fontWeight: FontWeight.w600,
-      ),
+    return CircleAvatar(
+      backgroundColor: Colors.transparent,
+      child: Container(child: Image.asset('images/logo.png')),
+      radius: 140,
     );
   }
 }
