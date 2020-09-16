@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets/pages/community.dart';
+import 'package:pets/pages/more.dart';
 import 'package:pets/pages/rescue.dart';
 import 'package:pets/widgets/category_card.dart';
 
@@ -71,7 +72,10 @@ class CategoriesPage extends StatelessWidget {
                   size: 40.0,
                 ),
                 cardTitle: "More...",
-                tapOnCard: () {},
+                tapOnCard: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => More()));
+                },
               ),
             ],
           ),

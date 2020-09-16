@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pets/widgets/camera_screen.dart';
 
 class Rescue extends StatefulWidget {
   @override
@@ -26,7 +25,11 @@ class _RescueState extends State<Rescue> {
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(130),
           child: Center(
-            child: Text("be a good person and rescue an animal"),
+            child: Text(
+              "be a good person and rescue an animal",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
       ),
