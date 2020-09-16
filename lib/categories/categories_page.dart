@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets/pages/community.dart';
+import 'package:pets/pages/rescue.dart';
 import 'package:pets/widgets/category_card.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -42,7 +43,7 @@ class CategoriesPage extends StatelessWidget {
                 cardTitle: "Rescue",
                 tapOnCard: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Community()));
+                      MaterialPageRoute(builder: (context) => Rescue()));
                 },
               ),
               CategoryCard(
@@ -52,10 +53,7 @@ class CategoriesPage extends StatelessWidget {
                   size: 40.0,
                 ),
                 cardTitle: "Adopt",
-                tapOnCard: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Community()));
-                },
+                tapOnCard: () {},
               ),
               CategoryCard(
                 cardIcon: Icon(
@@ -64,10 +62,7 @@ class CategoriesPage extends StatelessWidget {
                   size: 40.0,
                 ),
                 cardTitle: "Shops",
-                tapOnCard: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Community()));
-                },
+                tapOnCard: () {},
               ),
               CategoryCard(
                 cardIcon: Icon(
@@ -76,10 +71,7 @@ class CategoriesPage extends StatelessWidget {
                   size: 40.0,
                 ),
                 cardTitle: "More...",
-                tapOnCard: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Community()));
-                },
+                tapOnCard: () {},
               ),
             ],
           ),
